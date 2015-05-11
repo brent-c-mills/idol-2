@@ -138,12 +138,16 @@ test_idol_install() {
 	fi
 }
 
-
 #################################
 ##    FIND BASE DIRECTORY:     ##
 #################################
 echo "Determining installation directory..." | tee -a ${INSTALL_LOG};
 BASE_DIR="`pwd`";
+BIN_DIR=${BASE_DIR}/bin;
+LIB_DIR=${BASE_DIR}/lib;
+LOG_DIR=${BASE_DIR}/log;
+TEST_DIR=${BASE_DIR}/tests;
+MAN_DIR=${BASE_DIR}/man;
 
 #################################
 ##     CREATE INSTALL LOG:     ##
@@ -152,7 +156,6 @@ BASE_DIR="`pwd`";
 INSTALL_LOG=${BASE_DIR}/log/install.log;
 rm -f ${INSTALL_LOG};
 mkdir -p "$(dirname ${INSTALL_LOG})" && touch ${INSTALL_LOG};
-
 
 #################################
 ##       CHECK FOR BATS:       ##
@@ -165,24 +168,31 @@ check_bats;
 #################################
 test_bats_install;
 
-
 #################################
 ##  CHECK IDOL FILESTRUCTURE:  ##
 #################################
 install_idol;
-
 
 #################################
 ##  CHECK IDOL FILESTRUCTURE:  ##
 #################################
 test_idol_install;
 
+#################################
+##   DEFINE IDOL CONFIG FILE   ##
+#################################
+CONFIG_FILE=${BASE_DIR}/config/idol.config;
+sed -i -e "s+PLACEHOLD_CONFIG_FILE+${CONFIG_FILE}+g" ${BASE_DIR}/bin/idol;
 
 #################################
-## DEFINE IDOL BASE DIRECTORY  ##
+##      BUILD CONFIG FILE      ##
 #################################
-sed -i -e "s+PLACEHOLD_BASE_DIR+${BASE_DIR}+g" ${BASE_DIR}/bin/idol;
-
+sed -i -e "s+PLACEHOLD_BASE_DIR+${BASE_DIR}+g" ${BASE_DIR}/config/idol.config;
+sed -i -e "s+PLACEHOLD_BIN_DIR+${BIN_DIR}+g" ${BASE_DIR}/config/idol.config;
+sed -i -e "s+PLACEHOLD_LIB_DIR+${LIB_DIR}+g" ${BASE_DIR}/config/idol.config;
+sed -i -e "s+PLACEHOLD_LOG_DIR+${LOG_DIR}+g" ${BASE_DIR}/config/idol.config;
+sed -i -e "s+PLACEHOLD_TEST_DIR+${TEST_DIR}+g" ${BASE_DIR}/config/idol.config;
+sed -i -e "s+PLACEHOLD_MAN_DIR+${MAN_DIR}+g" ${BASE_DIR}/config/idol.config;
 
 #################################
 ##          EDIT PATH:         ##
@@ -190,7 +200,6 @@ sed -i -e "s+PLACEHOLD_BASE_DIR+${BASE_DIR}+g" ${BASE_DIR}/bin/idol;
 echo "export PATH="${BASE_DIR}/bin:"\$PATH" >> ~/.bash_profile;
 source ~/.bash_profile; #Works on some systems.
 . ~/.bash_profile; #Works on some systems.
-
 
 #################################
 ##          COMPLETION         ##
