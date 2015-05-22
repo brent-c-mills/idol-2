@@ -12,7 +12,7 @@ generate_environment_full_bats() {
 
   ENV_COMPONENT=( "/etc/shells" "/etc/hosts" "/etc/hosts.equiv" "/etc/paths" );
   
-   for i in ${ENV_COMPONENT[@]}; do
+  for i in ${ENV_COMPONENT[@]}; do
     while read -r LINE || [[ -n $LINE ]]; do
       IFS=' ' read -a array <<< ${LINE};
 

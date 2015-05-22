@@ -4,8 +4,6 @@ bold=`tput bold`
 normal=`tput sgr0`
 clear
 
-
-
 echo "idol.sh";
 echo "";
 

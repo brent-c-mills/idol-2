@@ -13,9 +13,9 @@ generate_environment_hash() {
     
     for i in "${ENV_COMPONENT[@]}"
     do
-            cat ${i} >> /tmp/environment_hash.txt;
-            echo "" >> /tmp/environment_hash.txt;
-            echo "" >> /tmp/environment_hash.txt;
+        cat ${i} >> /tmp/environment_hash.txt;
+        echo "" >> /tmp/environment_hash.txt;
+        echo "" >> /tmp/environment_hash.txt;
     done
 
     local hashgolden=($(md5sum /tmp/environment_hash.txt));

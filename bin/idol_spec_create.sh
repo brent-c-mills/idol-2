@@ -6,8 +6,6 @@ set -e
 ##          FUNCTIONS          ##
 #################################
 
-
-
 #################################
 ##         READ INPUT:         ##
 #################################
@@ -29,8 +27,6 @@ IDOL_SPEC_NAME=$2;
 BASE_DIR=$3;
 CURRENT_LOG=$4;
 
-
-
 NOW=$(date +"%m_%d_%Y_%H%M%S");
 BIN_DIR=$BASE_DIR/bin;
 LIB_DIR=$BASE_DIR/lib;
@@ -38,7 +34,6 @@ MAN_DIR=$BASE_DIR/man;
 IDOL_DIR=$TEST_DIR/$IDOL_NAME;
 FULL_BATS=$IDOL_DIR/full_bats;
 HASH_BATS=$IDOL_DIR/hash_bats;
-
 
 #################################
 ##   CREATE SERVERSPEC TESTS   ##

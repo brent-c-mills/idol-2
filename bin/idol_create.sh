@@ -83,3 +83,6 @@ copy_bats_requirements
 
 #CREATE BATS TESTS BY CATEGORY
 create_bats_tests
+
+
+#echo ${IDOL_NAME},${OPERATING_SYSTEM},$(date +"%Y-%M-%D"),$"`whoami`",$(md5 ${IDOL_DIR}),${IDOL_DIR} >> ${IDOL_DIR}/README.txt;

@@ -51,7 +51,7 @@ fingerprint() {
 }
 
 help() {
-	${MAN_DIR}/idol_man.sh;
+  ${MAN_DIR}/idol_man.sh;
 }
 
 import_idol() {
@@ -77,7 +77,7 @@ read_config() {
 }
 
 test_idol() {
-	${BIN_DIR}/idol_test.sh ${IDOL_NAME} ${CURRENT_LOG} ${BASE_DIR} ${TEST_DIR};
+  ${BIN_DIR}/idol_test.sh ${IDOL_NAME} ${CURRENT_LOG} ${BASE_DIR} ${TEST_DIR};
 }
 
 usage() {
@@ -86,7 +86,7 @@ usage() {
 }
 
 version() {
-  echo "Idol 1.1.0";
+  echo "Idol 2.0.0";
 }
 
 #################################
@@ -123,53 +123,53 @@ for arg in "$@"; do
 done
 
 for option in "${options[@]}"; do
-	case "$option" in
-	"c" | "create" )
-		create_log;
-	    IDOL_NAME=$2;
-		fingerprint;
-		create_idol;
-		exit 0;
-	    ;;
-	"d" | "delete" )
-	    create_log;
-	    IDOL_NAME=$2;
-	    delete_idol;
-	    exit 0;
-	    ;;
-	"h" | "help" )
-	    help;
-	    exit 0;
-	    ;;
-	"i" | "import" )
-	    create_log;
-	    import_idol;
-	    exit 0;
-	    ;;
-    "l" | "list" )
-		list_idol;
-		exit 0;
-		;;
-	"p" | "package" )
-		create_log;
-	    package_idol;
-		exit 0;
-	    ;;
-	"t" | "test" )
-		create_log;
-    	IDOL_NAME=$2;
-		test_idol;
-		exit 0;
-    	;;
-	"v" | "version" )
-	    version;
-	    exit 0;
-	    ;;
-	* )
-	    usage >&2
-	    exit 1;
-	    ;;
-	esac
+  case "$option" in
+  "c" | "create" )
+    create_log;
+    IDOL_NAME=$2;
+    fingerprint;
+    create_idol;
+    exit 0;
+    ;;
+  "d" | "delete" )
+    create_log;
+    IDOL_NAME=$2;
+    delete_idol;
+    exit 0;
+    ;;
+  "h" | "help" )
+    help;
+    exit 0;
+    ;;
+  "i" | "import" )
+    create_log;
+    import_idol;
+    exit 0;
+    ;;
+  "l" | "list" )
+    list_idol;
+    exit 0;
+    ;;
+  "p" | "package" )
+    create_log;
+    package_idol;
+    exit 0;
+    ;;
+  "t" | "test" )
+    create_log;
+    IDOL_NAME=$2;
+    test_idol;
+    exit 0;
+    ;;
+  "v" | "version" )
+    version;
+    exit 0;
+    ;;
+  * )
+    usage >&2
+    exit 1;
+    ;;
+  esac
 done
 
 if [ "${#arguments[@]}" -eq 0 ]; then

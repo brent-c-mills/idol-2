@@ -13,9 +13,9 @@ generate_environment_hash() {
     
     for i in "${ENV_COMPONENT[@]}"
     do
-            cat ${i} >> /tmp/environment_hash.txt;
-            echo "" >> /tmp/environment_hash.txt;
-            echo "" >> /tmp/environment_hash.txt;
+        cat ${i} >> /tmp/environment_hash.txt;
+        echo "" >> /tmp/environment_hash.txt;
+        echo "" >> /tmp/environment_hash.txt;
     done
 
     local hashgolden=($(md5 /tmp/environment_hash.txt | awk '{ print $4 }'));
@@ -28,9 +28,9 @@ generate_environment_hash_bats() {
 
     for i in "${ENV_COMPONENT[@]}"
     do
-            echo "cat "${i}" >> /tmp/environment_hash.txt" >> ${OUTPUT_BATS};
-            echo "echo \"\" >> /tmp/environment_hash.txt" >> ${OUTPUT_BATS};
-            echo "echo \"\" >> /tmp/environment_hash.txt" >> ${OUTPUT_BATS};
+        echo "cat "${i}" >> /tmp/environment_hash.txt" >> ${OUTPUT_BATS};
+        echo "echo \"\" >> /tmp/environment_hash.txt" >> ${OUTPUT_BATS};
+        echo "echo \"\" >> /tmp/environment_hash.txt" >> ${OUTPUT_BATS};
     done
 
     echo "HASHCHECK=\$(md5 /tmp/environment_hash.txt | awk '{ print \$4 }')" >> ${OUTPUT_BATS};

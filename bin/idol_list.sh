@@ -22,7 +22,7 @@ else
 
 	available=(`ls -1 ${TEST_DIR}`);
 	for i in ${available[@]}; do
-	    IDOLNAME=$(grep "NAME" ${TEST_DIR}/${i}/README.txt | awk -F':' '{ print $2 }');
+	  IDOLNAME=$(grep "NAME" ${TEST_DIR}/${i}/README.txt | awk -F':' '{ print $2 }');
 		IDOLOS=$(grep "OS:" ${TEST_DIR}/${i}/README.txt | awk -F':' '{ print $2 }');
 		IDOLDATE=$(grep "DATE" ${TEST_DIR}/${i}/README.txt | awk -F':' '{ print $2 }');
 		IDOLAUTHOR=$(grep "AUTHOR" ${TEST_DIR}/${i}/README.txt | awk -F':' '{ print $2 }');
