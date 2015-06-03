@@ -9,12 +9,17 @@ create_idol_dir() {
 }
 
 create_idol_readme() {
-	echo "IDOL INFORMATION:" >> ${IDOL_DIR}/README.txt;
-	echo "" >> ${IDOL_DIR}/README.txt;
-	echo "NAME:"${IDOL_NAME}  >> ${IDOL_DIR}/README.txt;
-	echo "OS:"${OPERATING_SYSTEM}  >> ${IDOL_DIR}/README.txt;
-	echo "DATE:"$(date +"%m_%d_%Y") >> ${IDOL_DIR}/README.txt;
-	echo "AUTHOR:"$"`whoami`" >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_NAME:"${IDOL_NAME} >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_OS:"${OPERATING_SYSTEM} >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_DATE:"$(date +"%Y-%m-%d") >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_AUTHOR:"$"`whoami`" >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_HASH:" >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_LOCATION:" >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_REPO:idol" >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_BRANCH:master" >> ${IDOL_DIR}/README.txt;
+	echo "IDOL_COMMIT:commit-hash" >> ${IDOL_DIR}/README.txt;
+	echo "ARTIFACT_TYPE:N/A" >> ${IDOL_DIR}/README.txt;
+	echo "ARTIFACT_HASH:N/A" >> ${IDOL_DIR}/README.txt;
 
 }
 
@@ -38,7 +43,6 @@ create_bats_tests(){
 		${BIN_DIR}/${i}_hash_${OPERATING_SYSTEM}.sh ${HASH_BATS} ${IDOL_NAME} ${CURRENT_LOG};
 		echo "Finished generating "$i"-related BATS files for "${IDOL_NAME}"..." | tee -a ${CURRENT_LOG};
 		echo "";
-
 	done
 }
 
@@ -83,6 +87,5 @@ copy_bats_requirements
 
 #CREATE BATS TESTS BY CATEGORY
 create_bats_tests
-
 
 #echo ${IDOL_NAME},${OPERATING_SYSTEM},$(date +"%Y-%M-%D"),$"`whoami`",$(md5 ${IDOL_DIR}),${IDOL_DIR} >> ${IDOL_DIR}/README.txt;
